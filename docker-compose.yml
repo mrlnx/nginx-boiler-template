@@ -1,0 +1,20 @@
+version: '3'
+services:
+  client:
+    build: ./client
+    volumes:
+      - ./client:/client
+      - /server/node_modules
+    ports:
+      - 80:80
+    container_name: vw_viewer_client
+    depends_on:
+      - server
+  server:
+    build: ./server
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    ports:
+      - 5000:5000
+    container_name: vw_viewer_server
